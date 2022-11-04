@@ -51,7 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			
 		} catch (PDOException $e) {			
 			// Password is not valid, display a generic error message
-            $login_err = "Invalid username or password.";			
+			if ($e->getCode() == '1045')
+				$login_err = "Invalid username or password.";	
+			else
+				die("ERROR: Could not able to execute " . $e->getMessage());			
 		}			
         include_once('include/db_close_pdo.php');				      
     }
