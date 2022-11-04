@@ -16,7 +16,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Artists</a>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="AllArtists.php">All Artists</a></li>
-                        <li><a class="dropdown-item" href="ArtistByStyle.php">By Style</a></li>
+                        <li><a class="dropdown-item" href="#.php">By Style</a></li>
                         <li><a class="dropdown-item" href="ArtistByMedia.php">By Media</a></li>
                     </ul>
                 </li>
@@ -35,6 +35,7 @@
                         <li><a class="dropdown-item" href="StyleTable.php">Style</a></li>
                         <li><a class="dropdown-item" href="MediaTable.php">Media</a></li>
                         <li><a class="dropdown-item" href="PaintingTable.php">Painting</a></li>
+						<li><a class="dropdown-item" href="Login.php">Member</a></li>
                     </ul>
                 </li>				
                 <li class="nav-item">
