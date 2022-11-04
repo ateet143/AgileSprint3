@@ -1,0 +1,113 @@
+Got a packet bigger than 'max_allowed_packet' bytes
+------------------------------------------------------------------------------
+Drop table Painting
+
+XAMPP Control Panel -> MySQL -> Config -> my.ini
+
+Change from :
+max_allowed_packet = 1M
+net_buffer_length = 8K
+
+Change to   :
+max_allowed_packet = 10M
+net_buffer_length = 80K
+
+XAMPP Control Panel -> MySQL -> Stop
+XAMPP Control Panel -> MySQL -> Start
+
+phpMyAdmin -> acmeArtsDB -> Import -> Choose File -> Painting.sql -> Import
+------------------------------------------------------------------------------
+
+
+CREATE DATABASE IF NOT EXISTS acmeArtsDB;
+USE acmeArtsDB;
+
+CREATE TABLE Artist(
+ArtistName VARCHAR(255) NOT NULL,
+PRIMARY KEY(ArtistName)
+);
+
+INSERT INTO Artist(ArtistName)
+VALUES 
+	('August Renoir'),
+	('Michelangelo'),
+	('Vincent Van Gogh'),
+	('Leonardo da Vinci'),
+	('Claude Monet'),
+	('Pablo Picasso'),
+	('Salvador Dali'),
+	('Paul Cezanne');
+	
+	
+
+CREATE TABLE Style(
+ArtStyle VARCHAR(255) NOT NULL,
+PRIMARY KEY(ArtStyle)
+);
+
+INSERT INTO Style(ArtStyle)
+VALUES 
+	('Impressionism'),
+	('Mannerism'),
+	('Still-life'),
+	('Portrait'),
+	('Realism'),
+	('Cubism'),
+	('Surrealism');
+
+CREATE TABLE Media(
+Medium VARCHAR(255) NOT NULL,
+PRIMARY KEY(Medium)
+);
+
+INSERT INTO Media(Medium)
+VALUES 
+	('oil'),
+	('pen-ink');
+
+
+CREATE TABLE Painting(
+Title VARCHAR(255) NOT NULL,
+Year INT NOT NULL,
+Thumbnail BLOB,
+Image LONGBLOB,
+ArtistName VARCHAR(255),
+ArtStyle VARCHAR(255),
+Medium VARCHAR(255),
+PRIMARY KEY(Title),
+FOREIGN KEY(ArtistName) REFERENCES Artist(ArtistName),
+FOREIGN KEY(ArtStyle) REFERENCES Style(ArtStyle),
+FOREIGN KEY(Medium) REFERENCES Media(Medium)
+);
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Bal du moulin de la Galette', '1876', NULL, NULL, 'August Renoir', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Doni Tondo (Doni Madonna)', '1507', NULL, NULL, 'Michelangelo', 'Mannerism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Vase with Twelve Sunflowers', '1888', NULL, NULL, 'Vincent Van Gogh', 'Still-life', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Mona Lisa', '1503', NULL, NULL, 'Leonardo da Vinci', 'Portrait', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('The Potato Eaters', '1885', NULL, NULL, 'Vincent Van Gogh', 'Realism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Sunrise', '1972', NULL, NULL, 'Claude Monet', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Weaver', '1884', NULL, NULL, 'Vincent Van Gogh', 'Realism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Nature morte au compotier', '1914', NULL, NULL, 'Pablo Picasso', 'Cubism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Houses of Parliament', '1899', NULL, NULL, 'Claude Monet', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Cafe Terrace at Night', '1888', NULL, NULL, 'Vincent Van Gogh', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('At the Lapin Agile', '1905', NULL, NULL, 'Pablo Picasso', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('The Persistence of Memory', '1931', NULL, NULL, 'Salvador Dali', 'Surrealism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('The Hallucinogenic Toreador', '1970', NULL, NULL, 'Salvador Dali', 'Surrealism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Jaz de Bouffan', '1877', NULL, NULL, 'Paul Cezanne', 'Impressionism', 'oil');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('Vitruvian Man', '1490', NULL, NULL, 'Leonardo da Vinci', 'Realism', 'pen-ink');
+
+INSERT INTO `Painting` (`Title`, `Year`, `Thumbnail`, `Image`, `ArtistName`, `ArtStyle`, `Medium`) VALUES ('The Kingfisher', '1495', NULL, NULL, 'Vincent Van Gogh', 'Realism', 'pen-ink');
