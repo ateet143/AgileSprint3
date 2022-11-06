@@ -30,11 +30,21 @@ if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
 	if (empty($FfirstName)) {
 		header("Location: Subscribe.php?errorFirstName=First Name is required&$user_data");
 	    exit();
+    //Allows only letter and whitespace
+	}else if (!preg_match("/^[a-zA-Z-' ]*$/",$FfirstName)) {
+        header("Location: Subscribe.php?errorFirstName=Only letters and white space allowed&$user_data");
+	    exit();
+        
+      }
     //if the Last Name field is empty then send this error
-	}else if(empty($FlastName)){
+    else if(empty($FlastName)){
         header("Location: Subscribe.php?errorLastName=Last Name is required&$user_data");
 	    exit();
-	}
+    //Allows only letter and whitespace
+	}else if (!preg_match("/^[a-zA-Z-' ]*$/",$FlastName)) {
+        header("Location: Subscribe.php?errorLastName=Only letters and white space allowed&$user_data");
+	    exit();
+      }
     //if the Email field is empty then send this error
 	else if(empty($FEmail)){
         header("Location: Subscribe.php?errorEmail=Email  is required&$user_data");

@@ -15,6 +15,11 @@
 	<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">       
 	<!-- Custom styles for this template -->
     <link href="navbar-top-fixed.css" rel="stylesheet">
+	<style>
+		.error {
+ 		 color: red;
+		}
+	</style>
   </head>
   
   <body>    	
