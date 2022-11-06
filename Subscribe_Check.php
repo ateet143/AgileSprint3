@@ -70,9 +70,21 @@ if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
                 $sql = "INSERT INTO Member (FirstName, LastName, Email, MonthlyNewsletter, BreakingNews) VALUES (?,?,?,?,?)";
                 if ($stmt = $pdo->prepare($sql)) {
                     if ($stmt->execute([$FfirstName, $FlastName, $FEmail, $FcheckNewsLetter, $FcheckBreakingNews])) {
-                        // Records created successfully. Redirect to landing page
-                        header("Location: Subscribe.php?success=Congratulation!, $FfirstName, You are Sucessfully Subscribed");
-                        exit();
+
+                            if($FcheckNewsLetter == 1 && $FcheckBreakingNews == 1){
+                            // Records created successfully. Redirect to landing page
+                                header("Location: Subscribe.php?success=Congratulation!, $FfirstName, You are Sucessfully Subscribed to Both Subscription");
+                                exit();
+                             }
+                            if($FcheckNewsLetter == 1 && $FcheckBreakingNews == 0){
+                                    header("Location: Subscribe.php?success=Congratulation!, $FfirstName, You are Sucessfully Subscribed to Monthly Newsletter");
+                                    exit();
+                            }
+                            if($FcheckNewsLetter == 0 && $FcheckBreakingNews == 1){
+                                    header("Location: Subscribe.php?success=Congratulation!, $FfirstName, You are Sucessfully Subscribed to Breaking News");
+                                    exit();
+                            }
+                       
                     } else {
                         header("Location: Subscribe.php?error=unknown error occurred&$user_data");
                         exit();
