@@ -23,15 +23,16 @@
   ?>	
 	<main class="container">
 	  <div class="bg-light p-3 rounded">
+		<!-- If the Form is filled and sucessfully added to the database then this code will execute and exit -->
 	  <?php if (isset($_GET['success'])) { ?>
                <p class="success"><?php echo $_GET['success']; ?></p>
-			   <?php exit();?>
-        <?php } ?>
+			   <?php exit();}?>
 
+		<!-- If the Form is filled and get error  then this code will execute and exit -->
 		<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
-			 <?php exit();?>
-     	<?php } ?>
+			 <?php exit();}?>
+     	
 	  <h1>Subscription Form</h1>
 
 	  	<form action="subscribe_check.php" method="post">
@@ -39,26 +40,24 @@
     			<label for="FfirstName">First Name</label>
    				<input type="text" class="form-control" id="FfirstName" name="FfirstName">
 				   <?php if (isset($_GET['errorFirstName'])) { ?>
-     		      <span class="error"><?php echo $_GET['errorFirstName']; ?></span><?php } ?>
-
-   				
+     		      <span class="error"><?php echo $_GET['errorFirstName']; }?></span>
  		 </div>
+
 	     <div class="form-group w-50">
     			<label for="FlastName">Last Name</label>
    				<input type="text" class="form-control" id="FlastName" name="FlastName" >
 				   <?php if (isset($_GET['errorLastName'])) { ?>
-     		<span class="error"><?php echo $_GET['errorLastName']; ?></span><?php } ?>
-				
+     		<span class="error"><?php echo $_GET['errorLastName'];} ?></span>
  		 </div>
 
   		 <div class="form-group w-50">
     			<label for="FEmail">Email address</label>
    				<input type="email" class="form-control" id="FEmail" name="FEmail" aria-describedby="emailHelp" >
-   				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+   				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br>
 				<?php if (isset($_GET['errorEmail'])) { ?>
-     		    <span class="error"><?php echo $_GET['errorEmail']; ?></span><?php } ?>
- 		 </div>
-		 <br>
+     		    <span class="error"><?php echo $_GET['errorEmail'];} ?></span>
+ 		 </div><br>
+		 
 		 <fieldset class="border p-2  w-50">
 		 <legend>Choose subscription:</legend>
  			<div class="form-check">
@@ -68,9 +67,9 @@
 
 			<div class="form-check">
    				<input type="checkbox" class="form-check-input" id="FcheckBreakingNews" name="FcheckBreakingNews" value="1" checked >
-   				<label class="form-check-label" for="FcheckBreakingNews">Breaking News</label>
+   				<label class="form-check-label" for="FcheckBreakingNews">Breaking News</label><br>
 				<?php if (isset($_GET['errorCheckBox'])) { ?>
-     		    <span class="error"><?php echo $_GET['errorCheckBox']; ?></span><?php } ?>
+     		    <span class="error"><?php echo $_GET['errorCheckBox']; }?></span>
  			</div>
 		
  			<button type="submit" class="btn btn-primary my-2">Subscribe</button><br>

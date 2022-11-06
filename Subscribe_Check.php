@@ -3,8 +3,9 @@ session_start();
 include_once('include/navbar.php');
 include_once('include/db_connect_pdo.php');
 
+// If all the field in the form is filled and error free then execute this code
 if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
-    && isset($_POST['FEmail']) && (isset($_POST['FcheckNewsLetter']) || isset($_POST['FcheckBreakingNews']))) {
+    && isset($_POST['FEmail']) ) {
 
 	function validate($data){
        $data = trim($data);
@@ -18,20 +19,23 @@ if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
 	$FEmail = validate($_POST['FEmail']);
    
 
+    //if the checkbox has value then assign 1 otherwise 0
     (isset($_POST['FcheckNewsLetter'])) ? $FcheckNewsLetter = 1 :  $FcheckNewsLetter = 0;
     (isset($_POST['FcheckBreakingNews'])) ? $FcheckBreakingNews = 1 :  $FcheckBreakingNews = 0;
 
-
+    // to assign the value in querystring
 	$user_data = 'First Name='. $FfirstName. '&Last Name='. $FlastName. '&Email='. $FEmail;
 
-
+    //if the first Name field is empty then send this error
 	if (empty($FfirstName)) {
 		header("Location: Subscribe.php?errorFirstName=First Name is required&$user_data");
 	    exit();
+    //if the Last Name field is empty then send this error
 	}else if(empty($FlastName)){
         header("Location: Subscribe.php?errorLastName=Last Name is required&$user_data");
 	    exit();
 	}
+    //if the Email field is empty then send this error
 	else if(empty($FEmail)){
         header("Location: Subscribe.php?errorEmail=Email  is required&$user_data");
 	    exit();
@@ -42,12 +46,13 @@ if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
 	}
 
 	else{
-
+        // to check if the email already assigned with other user in database
 	    $sql = "SELECT * FROM Member WHERE Email='$FEmail' ";
         $result = $pdo->query($sql);
 
+        // if the email already exist in database then send this error
         if ($result->rowCount() > 0) {
-			header("Location: Subscribe.php?errorEmail=The Email is taken try another&$user_data");
+			header("Location: Subscribe.php?errorEmail=$FEmail Already Subscribed or Try Using Different Email&$user_data");
 	        exit();
 		}
         else{
@@ -56,7 +61,7 @@ if (isset($_POST['FfirstName']) && isset($_POST['FlastName'])
                 if ($stmt = $pdo->prepare($sql)) {
                     if ($stmt->execute([$FfirstName, $FlastName, $FEmail, $FcheckNewsLetter, $FcheckBreakingNews])) {
                         // Records created successfully. Redirect to landing page
-                        header("Location: Subscribe.php?success=Congratulation! $FfirstName You are Sucessfully Subscribed");
+                        header("Location: Subscribe.php?success=Congratulation!, $FfirstName, You are Sucessfully Subscribed");
                         exit();
                     } else {
                         header("Location: Subscribe.php?error=unknown error occurred&$user_data");
