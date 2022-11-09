@@ -36,6 +36,7 @@
 		<!-- If the Form is filled and get error  then this code will execute and exit -->
 		<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
+			 <a href="Subscribe.php">Go to Subscribe Page</a>
 			 <?php exit();}?>
      	
 	  <h1>Subscription Form</h1>
