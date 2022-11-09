@@ -31,6 +31,7 @@
 		<!-- If the Form is filled and sucessfully added to the database then this code will execute and exit -->
 	  <?php if (isset($_GET['success'])) { ?>
                <p class="success"><?php echo $_GET['success']; ?></p>
+			   <a href="Index.php">Go to HomePage</a>
 			   <?php exit();}?>
 
 		<!-- If the Form is filled and get error  then this code will execute and exit -->
