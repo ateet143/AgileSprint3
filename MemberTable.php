@@ -36,6 +36,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<main class="container">
 	  <div class="bg-light p-3 rounded">
 		<h1>Member</h1>				
+			<!-- Avoid PHP_SELF exploit -->
 			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="d-flex" role="search" method="post">
                 <input class="form-control ms-2 me-2" type="search" placeholder="Member Email Search" aria-label="Search" name="Email">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -45,7 +46,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			//Processing member after self-call is submitted
 			if (isset($_POST['Email'])) {
 				if(!empty($_POST['Email'])) {
-					$email = $_POST['Email'];
+					// Remove any illegal character from the data
+					$email = filter_var($_POST['Email'],FILTER_SANITIZE_STRING);
 					
 					try {
 						$sql = "SELECT * FROM Member WHERE Email = '$email'";          
