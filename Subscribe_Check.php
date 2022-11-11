@@ -1,6 +1,5 @@
 <?php 
 session_start(); 
-include_once('include/navbar.php');
 include_once('include/db_connect_pdo.php');
 
 // If all the field in the form is filled and error free then execute this code
