@@ -115,6 +115,28 @@ try {
 			('The Kingfisher', '1495', NULL, NULL, 3, 5, 2)";
 	
 	executeStmt($pdo,$sql);
+
+	$sql = "DROP TABLE IF EXISTS Member";
+	executeStmt($pdo,$sql);
+
+	$sql = "CREATE TABLE Member(
+		Id INT NOT NULL AUTO_INCREMENT,
+   		FirstName VARCHAR(255) NOT NULL,
+    	LastName VARCHAR(255) NOT NULL,
+    	Email VARCHAR(255) NOT NULL UNIQUE,
+   		MonthlyNewsletter BOOLEAN NOT NULL,
+   	 	BreakingNews BOOLEAN NOT NULL,
+    	PRIMARY KEY (Id)
+		);";
+executeStmt($pdo,$sql);
+
+$sql = "INSERT INTO Member (FirstName, LastName, Email, MonthlyNewsletter, BreakingNews) 
+			VALUES 
+			('Atit', 'Singh', 'ateet143@gmail.com',1, 1),
+			('Ellena', 'Begg', 'EllenaBegg@gmail.com',0, 1),
+			('Low', 'KOK', 'lkok@gmail.com',1,0)";
+	
+	executeStmt($pdo,$sql);
 					
 } catch(PDOException $e) {
 	die("ERROR: Could not able to execute $sql. " . $e->getMessage());
