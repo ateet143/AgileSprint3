@@ -16,7 +16,7 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Artists</a>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a class="dropdown-item" href="AllArtists.php">All Artists</a></li>
-                        <li><a class="dropdown-item" href="#.php">By Style</a></li>
+                        <li><a class="dropdown-item" href="ArtistByStyle.php">By Style</a></li>
                         <li><a class="dropdown-item" href="ArtistByMedia.php">By Media</a></li>
                     </ul>
                 </li>
@@ -28,6 +28,15 @@
                         <li><a class="dropdown-item" href="Style.php">By Style</a></li>
                     </ul>
                 </li>
+				<!-- EDIT nav bar to list all members and searches for subscription type. Ellena Begg -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Members</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="AllMembers.php">All Members</a></li>
+						<li><a class="dropdown-item" href="MembersByBreaking.php">By Breaking News</a></li>
+                        <li><a class="dropdown-item" href="MembersByMonthly.php">By Monthly News</a></li>
+                    </ul>
+                </li>				
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Inventory</a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -40,6 +49,9 @@
                 </li>				
                 <li class="nav-item">
                     <a class="nav-link" href="Contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Subscribe.php">Subscribe</a>
                 </li>
             </ul>
 			<!-- Search box to find an Artist by Name -->
