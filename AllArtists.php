@@ -1,6 +1,5 @@
 <?php
 // Team      : ALE (Atit, Ellena, Low)
-// Developer : Low, Kok Wei
 // Date      : Oct 2022
 ?>
 <!doctype html>
@@ -9,7 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="Low Kok Wei">    
+        <meta name="author" content="ALE TEAM">    
         <title>All Artists</title>
 
         <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">        

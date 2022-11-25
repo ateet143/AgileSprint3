@@ -50,6 +50,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Contact.php">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Subscribe.php">Subscribe</a>
+                </li>
             </ul>
 			<!-- Search box to find an Artist by Name -->
             <form action="OneArtist.php" class="d-flex" role="search">
