@@ -1,6 +1,5 @@
 <?php
 // Team      : ALE (Atit, Ellena, Low)
-// Developer : Low, Kok Wei
 // Date      : Oct 2022
 ?>
 <?php
